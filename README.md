@@ -1,1 +1,1 @@
-# cs-configs
+# myconfigs
