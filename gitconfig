@@ -1,0 +1,193 @@
+[user]
+	email = jlin@snapchat.com
+	name = jlinsc
+[diff]
+	tool = vimdiff
+[core]
+	editor = /usr/bin/vim
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[web]
+    browser = google-chrome
+[rerere]
+    enabled = 1
+    autoupdate = 1
+[push]
+    default = matching
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = redd reverse
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+[alias]
+    a = add --all
+    ai = add -i
+#############
+    #addedp = apply
+    #as = apply --stat
+    #ac = apply --check
+    ##############
+    #ama =              am --abort
+    #amr = am --resolved
+    #ams = am --skip
+    ##############
+    #b = branchanch
+    #ba = branch -a
+    #bd = branch -d
+    #br = branch -r
+    #bdd = branch -D
+    #br#############
+    #c = commit
+    #ca = commit -a
+    #cm = commit -m
+    #cem = commit --allow-empty -m
+    #cam = commit -am
+    #cd = commit --amend
+    #cad = commit           -a --amend
+    #ced = commit --allow-empty --amend
+    ##############
+    #cp = cherry-pick
+    #cpa = cherry-pick --abort
+    #cpc = cherry-pick --continue
+    #####cpc#########
+    #d = diff
+    #dc = diff --cached
+    #dl = difftool
+    #dlc = difftool                 --cached
+    #dk = diff --check
+    #dp = diff --patience
+    #dck = diff --cached            --check
+    ##############
+    #f = fetch
+    #fo = fetch origin
+    #fu = fetch upstream
+    ##############
+    #fp = format-patch
+    ##############
+    #fk = fsck
+    ########upstream######
+    #g = grep -p
+    ##############
+    #l = log --oneline
+    #lg = log --oneline --graph --decorate
+    ##############
+    #ls = ls-files
+    #lsf = "!git ls-fileses | grep -i"
+    ##############
+    #m = merge
+    #ma = merge --abort
+    #mc = merge --continue
+    #ms = merge --skip
+    ##############
+    #o = checkout
+    #ob = checkout -b
+    ##############
+    #pr = prune -v
+    ##############
+    #ps = push
+    #psf = prush -f
+    #psu = push -u
+    #pso = push origin
+    #psao = push --all origin
+    #psfo = push -f origin
+    #psuo = push -u origin
+    #psom = push origin master
+    #psuosfom = push -f origin master
+    #psuom = push -u origin master
+    ###########origin###
+    #pl = pull
+    #plu = pull -u
+    #plo = pull origin
+    #plp = pull upstream
+    #ploplom = pull origin master
+    #plpm = pull upstream master
+    ##############
+    #pullpb = pull --rebase
+    #pbo = pull --rebase origin
+    #pbp = pull --rebase ups
+    #pbom = pull --rebase origin master
+    #pbpm = pull --rebase upstream master
+    ##############
+    #rb = rebase
+    #rba = rebase --abort
+    #rbc = rebase --continue
+    #rbi = rebase --interactive
+    #rbs = rebase --skip
+    #########rbs#####
+    #re = reset
+    #rh = reset HEAD
+    #reh = reset --hard
+    #rem = reset --mixed
+    #res = reset --soft
+    #rehh = reset --hard HEAD
+    #remh = reset --mixedd HEAD
+    #resh = reset --soft HEAD
+    ##############
+    #r = remote
+    #ra = remote add
+    #rr = remote rm
+    #rv = remote -v
+    #rm = remote rename
+    #rp = remote                prune
+    #rs = remote show
+    #rao = remote add origin
+    #rau = remote add upstreamream
+    #rso = remote show origin
+    #rsu = remote show upstream
+    #rpo = remotee prune origin
+    #rpu = remote prune upstream
+    ##############
+    #s = status
+    #prunesb = status -s -b
+    ##############
+    #sa = stash apply
+    #sc = stash clear
+    #sasd = stash drop
+    #sl = stash list
+    #sp = stash pop
+    #ss = stash save
+    #sw =ss stash show
+    ##############
+    #w = show
+    #wp = show -p
+    #wr = show -p --no-color
+    ##############
+    #svnr = svn rebase
+    #svnd = svn dcommit
+    #svnl = svn                 log --oneline --show-commit
+    ##############
+    #assume = update-index --assume-unchanged
+    #unassume = update-index --no-assume-unchanged
+    #assumed =--no-assume-unchanged "!git ls-files -v | grep ^h | cut -c 3-"
+    #unassumeall = !git assumed |assumed xargs git update-index
+    #--no-assume-unchanged
+    #assumeall = "!git st -s    | awk {'print $2'} | xargs git assume"
+    ##############
+    #ours = "!f() { grepit checkout --ours $@ && git add $@; }; f"
+    #theirs = "!f() { git checkoutut --theirs $@ && git add $@; }; f"
+    ##############
+    #whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\"
+    #--author=\"$1\"' -"
+    #whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+    ##############
+    #shortbarebranch = !sh -c 'git symbolic-ref HEAD refs/heads/$1 && git rm
+    #--continueached -r . && git clean -xfd' -
+    #flat = clone --depth 1
+    #subpull = !git submodule foreach git pull --tags origin master
+    #subrepo = !sh -c 'filter-branch --prune-empty --subdirectory-filter $1
+    #master' -
+    #human = nameme-rev --name-only --refs=refs/heads/*
+    #serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all
+    #./.git
+    #snapshot = !git stash saveve "snapshot: $(date)" && git stash apply
+    #"stash@{0}"

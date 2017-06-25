@@ -7,7 +7,10 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="vi ~/.zshrc"
+alias gbi="./gradlew buckInstall"
+alias gcm="git checkout master"
+alias gpm="git pull origin master"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -129,6 +132,8 @@ compdef gcount=git
 alias gcl='git config --list'
 alias gcp='git cherry-pick'
 compdef _git gcp=git-cherry-pick
+alias gl='git log'
+compdef _git gl=git-log
 alias glg='git log --stat --max-count=10'
 compdef _git glg=git-log
 alias glgg='git log --graph --max-count=10'
@@ -139,6 +144,8 @@ alias glo='git log --oneline --decorate --color'
 compdef _git glo=git-log
 alias glog='git log --oneline --decorate --color --graph'
 compdef _git glog=git-log
+alias gs='git status'
+compdef _git gs=git-status
 alias gss='git status -s'
 compdef _git gss=git-status
 alias ga='git add'
