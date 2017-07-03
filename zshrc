@@ -6,11 +6,19 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Example aliases
+# github aliases
+alias git="/usr/local/bin/git" # installed by brew
 alias zshconfig="vi ~/.zshrc"
+alias zshconf="vi ~/.zshrc"
+alias zshc="vi ~/.zshrc"
+alias zshsource="source ~/.zshrc"
+alias zshs="source ~/.zshrc"
+alias bbs="./buckw build snapchat"
+alias bis="./buckw install snapchat"
 alias gbi="./gradlew buckInstall"
 alias gcm="git checkout master"
 alias gpm="git pull origin master"
+alias gds="git diff --stat"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -264,10 +272,6 @@ export PATH=$GRADLE_HOME/bin:$PATH
 
 # egads
 export PATH=$HOME/libraries/apache-maven-3.3.9/bin:$PATH
-export PATH=$HOME/alpha-perf-analyzer/egads:$PATH
-export PATH=$HOME/alpha-perf-analyzer/egads/src:$PATH
-export PATH=$HOME/alpha-perf-analyzer/egads/src/main:$PATH
-#export PATH=/Users/jimmy.lin/Workspace/alpha-perf-analyzer/egads/target/classes:$PATH
 
 # Android
 export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
