@@ -2,12 +2,10 @@
 cur_path=$(shell pwd)
 vim_dir=$(cur_path)
 
-all: vim_install fish_install zsh_install git_config
+all: vim_install zsh_install git_config
 
 git_config:
-	git config --global user.email "jlin@snapchat.com"
-	git config --global user.name "jlinsc"
-	git config --global diff.tool vimdiff
+	ln -s $(cur_path)/gitconfig $(HOME)/.gitconfig
 
 ## install for vim
 vim_install:
@@ -29,8 +27,9 @@ fish_install:
 
 ## remove all installed files
 clean:
-	rm -rf ~/.config/fish/config.fish	
 	rm -rf $(HOME)/.zshrc
 	rm -rf $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.gitconfig
+	#rm -rf ~/.config/fish/config.fish	
 

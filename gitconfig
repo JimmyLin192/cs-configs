@@ -1,11 +1,15 @@
 [user]
 	email = jlin@snapchat.com
 	name = jlinsc
-[diff]
-	tool = vimdiff
 [core]
 	editor = /usr/bin/vim
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[diff]
+	tool = vimdiff
+[difftool]
+    prompt = false
+[alias]
+    d = difftool
 [web]
     browser = google-chrome
 [rerere]
@@ -29,9 +33,9 @@
     added = green bold
     changed = yellow bold
     untracked = red bold
-[alias]
-    a = add --all
-    ai = add -i
+#[alias]
+#    a = add --all
+#    ai = add -i
 #############
     #addedp = apply
     #as = apply --stat
