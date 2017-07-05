@@ -5,20 +5,104 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+source $ZSH/oh-my-zsh.sh
 
-# github aliases
+# Vim Customization
+alias vi='/usr/bin/vi'
+alias vim='/usr/bin/vi'
+
+# ZSH Customization
+plugins=(git)
+alias zshconfig="vi $HOME/.zshrc"
+alias zshconf="vi $HOME/.zshrc"
+alias zshc="vi $HOME/.zshrc"
+alias zshsource="source $HOME/.zshrc"
+alias zshs="source $HOME/.zshrc"
+
+# Git Customization: basics 
 alias git="/usr/local/bin/git" # installed by brew
-alias zshconfig="vi ~/.zshrc"
-alias zshconf="vi ~/.zshrc"
-alias zshc="vi ~/.zshrc"
-alias zshsource="source ~/.zshrc"
-alias zshs="source ~/.zshrc"
+alias g='git'
+compdef g=git
+alias glm="git log --merge"
+alias grl="git reflog"
+alias gsb="git show-branch"
+
+alias gd='git diff'
+compdef _git gd=git-diff
+gdv() { git diff -w "$@" | view - }
+compdef _git gdv=git-diff
+alias gdc='git diff --cached'
+compdef _git gdc=git-diff
+alias gds="git diff --stat"
+
+
+# Git Customization: Commit
+alias gc='git commit -v'
+compdef _git gc=git-commit
+alias gc!='git commit -v --amend'
+compdef _git gc!=git-commit
+alias gca='git commit -v -a'
+compdef _git gc=git-commit
+alias gca!='git commit -v -a --amend'
+compdef _git gca!=git-commit
+alias gcmsg='git commit -m'
+compdef _git gcmsg=git-commit
+
+# Git Customization: Pull and Push
+alias gl='git pull'
+compdef _git gl=git-pull
+alias gpm="git pull origin master"
+compdef _git gpm=git-pull
+alias gcm='git checkout master'
+alias gup='git pull --rebase'
+compdef _git gup=git-fetch
+
+alias gp='git push'
+compdef _git gp=git-push
+
+# Git Customization: Snapchat
 alias bbs="./buckw build snapchat"
 alias bis="./buckw install snapchat"
 alias gbi="./gradlew buckInstall"
-alias gcm="git checkout master"
-alias gpm="git pull origin master"
-alias gds="git diff --stat"
+
+# Git File Manipulation
+alias gcf="git cat-file -p"
+alias gcoi="git checkout --"
+
+# Git Customization: Stashing
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstb='git stash branch'
+alias gsts='git stash show --text'
+alias gstp='git stash pop'
+alias gstd='git stash drop'
+
+# Git Customization: Remote Repositories
+alias gr='git remote'
+compdef _git gr=git-remote
+alias grv='git remote -v'
+compdef _git grv=git-remote
+alias grmv='git remote rename'
+compdef _git grmv=git-remote
+alias grrm='git remote remove'
+compdef _git grrm=git-remote
+alias grset='git remote set-url'
+compdef _git grset=git-remote
+alias grup='git remote update'
+compdef _git grset=git-remote
+
+# Git Customization: Rebasing
+alias grbi='git rebase -i'
+compdef _git gri=git-rebase
+alias grbc='git rebase --continue'
+compdef _git grbc=git-rebase
+alias grba='git rebase --abort'
+compdef _git grba=git-rebase
+alias gb='git branch'
+compdef _git gb=git-branch
+alias gba='git branch -a'
+compdef _git gba=git-branch
+
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -58,13 +142,8 @@ alias gds="git diff --stat"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
-export PATH="/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/Users/JimmyLin/bin/mongodb:/Applications/Julia.app/Contents/Resources/julia/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texbin:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/mysql/bin:/Users/JimmyLin/bin/mongodb:/Applications/Julia.app/Contents/Resources/julia/bin:/usr/local/go/bin:/usr/local/go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -83,58 +162,11 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 # Aliases
-alias g='git'
-compdef g=git
-alias gst='git status'
-compdef _git gst=git-status
-alias gd='git diff'
-compdef _git gd=git-diff
-alias gdc='git diff --cached'
-compdef _git gdc=git-diff
-alias gl='git pull'
-compdef _git gl=git-pull
-alias gup='git pull --rebase'
-compdef _git gup=git-fetch
-alias gp='git push'
-compdef _git gp=git-push
-alias gd='git diff'
-gdv() { git diff -w "$@" | view - }
-compdef _git gdv=git-diff
-alias gc='git commit -v'
-compdef _git gc=git-commit
-alias gc!='git commit -v --amend'
-compdef _git gc!=git-commit
-alias gca='git commit -v -a'
-compdef _git gc=git-commit
-alias gca!='git commit -v -a --amend'
-compdef _git gca!=git-commit
-alias gcmsg='git commit -m'
-compdef _git gcmsg=git-commit
+
+
 alias gco='git checkout'
 compdef _git gco=git-checkout
-alias gcm='git checkout master'
-alias gr='git remote'
-compdef _git gr=git-remote
-alias grv='git remote -v'
-compdef _git grv=git-remote
-alias grmv='git remote rename'
-compdef _git grmv=git-remote
-alias grrm='git remote remove'
-compdef _git grrm=git-remote
-alias grset='git remote set-url'
-compdef _git grset=git-remote
-alias grup='git remote update'
-compdef _git grset=git-remote
-alias grbi='git rebase -i'
-compdef _git grbi=git-rebase
-alias grbc='git rebase --continue'
-compdef _git grbc=git-rebase
-alias grba='git rebase --abort'
-compdef _git grba=git-rebase
-alias gb='git branch'
-compdef _git gb=git-branch
-alias gba='git branch -a'
-compdef _git gba=git-branch
+
 alias gcount='git shortlog -sn'
 compdef gcount=git
 alias gcl='git config --list'
@@ -176,25 +208,13 @@ alias gg='git gui citool'
 alias gga='git gui citool --amend'
 alias gk='gitk --all --branches'
 
-alias gsts='git stash show --text'
-alias gsta='git stash'
-alias gstp='git stash pop'
-alias gstd='git stash drop'
-
 # Will cd into the top of the current repository
 # or submodule.
 alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
 
-# Git and svn mix
-alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
-compdef git-svn-dcommit-push=git
-
-alias gsr='git svn rebase'
-alias gsd='git svn dcommit'
 #
 # Will return the current branch name
 # Usage example: git pull origin $(current_branch)
-#
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
   ref=$(git rev-parse --short HEAD 2> /dev/null) || return
@@ -246,11 +266,13 @@ alias gunignore='git update-index --no-assume-unchanged'
 # list temporarily ignored files
 alias gignored='git ls-files -v | grep "^[[:lower:]]"'
 
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-
 #####################################################################
 ## The following setting would be subject to the local configuration.
 #####################################################################
+export PATH=/opt/local/bin:$PATH
+export PATH=/opt/local/sbin:$PATH
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=/usr/local/bin:/opt/X11/bin:/usr/texbin:$PATH
 
 # The next line sets up the PATH for the JAVA JRE
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.7)"
@@ -262,9 +284,8 @@ if [ -f '/Users/jimmy.lin/Workspace/libraries/google-cloud-sdk/path.zsh.inc' ]; 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jimmy.lin/Workspace/libraries/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/jimmy.lin/Workspace/libraries/google-cloud-sdk/completion.zsh.inc'; fi
 
-
 # The next line sets up the PATH for the hbase
-export PATH=/Users/jimmy.lin/Workspace/libraries/hbase-1.2.1/bin:$PATH
+export PATH=$HOME/Workspace/libraries/hbase-1.2.1/bin:$PATH
 
 # The next line sets up the PATH for the gradle
 export GRADLE_HOME=/opt/local/share/java/gradle
@@ -275,12 +296,15 @@ export PATH=$HOME/libraries/apache-maven-3.3.9/bin:$PATH
 
 # Android
 export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
-export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_HOME=$HOME/Library/Android/sdk
+
 # App engine
 export APPENGINE_HOME=~/Library/appengine-java-sdk-1.9.51
-#
+
+# Send Grid API Key
 export SENDGRID_API_KEY=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
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
+# Catapult Renderer
 export CATAPULT=$HOME/Workspace/catapult
