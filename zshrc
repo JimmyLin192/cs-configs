@@ -19,54 +19,100 @@ alias zshc="vi $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
 alias zshs="source $HOME/.zshrc"
 
+# Gradle/Buck Customization: Snapchat Android
+alias bbs="./buckw build snapchat"
+alias bis="./buckw install snapchat"
+alias gbi="./gradlew buckInstall"
+
 # Git Customization: basics 
 alias git="/usr/local/bin/git" # installed by brew
 alias g='git'
 compdef g=git
-alias glm="git log --merge"
-alias grl="git reflog"
-alias gsb="git show-branch"
 
+alias ga='git add'
+alias gap='git add -p' # hunk
+compdef _git ga=git-add
+compdef _git gap=git-add
+
+alias gm='git merge'
+compdef _git gm=git-merge
+
+# Git Customization: Info
+alias gls='git ls-files'
+alias gsha='git hash-object' # get sha1 val
+alias gparse='git rev-parse' # get file name
+alias gsb='git show-branch'
+alias gk='gitk --all --branches'
+alias gcl='git config --list'
+
+# Git Customization: Checkout 
+alias gco='git checkout'
+alias gcm='git checkout master'
+compdef _git gco=git-checkout
+compdef _git gcm=git-checkout
+
+# Git Customization: Status
+alias gs='git status'
+alias gss='git status -s'
+compdef _git gs=git-status
+compdef _git gss=git-status
+
+# Git Customization: Differences
 alias gd='git diff'
-compdef _git gd=git-diff
-gdv() { git diff -w "$@" | view - }
-compdef _git gdv=git-diff
-alias gdc='git diff --cached'
-compdef _git gdc=git-diff
 alias gds="git diff --stat"
+alias gdstr='git diff -S'
 
+alias gdc='git diff --cached'
+alias gdcs="git diff --cached --stat"
+alias gdcstr='git diff -S'
+gdv() { git diff -w "$@" | view - }
+compdef _git gd=git-diff
+compdef _git gdc=git-diff
+compdef _git gdv=git-diff
 
-# Git Customization: Commit
+# Git Customization: Commits
 alias gc='git commit -v'
-compdef _git gc=git-commit
-alias gc!='git commit -v --amend'
-compdef _git gc!=git-commit
+alias gcm='git commit -m'
 alias gca='git commit -v -a'
-compdef _git gc=git-commit
+alias gcam='git commit -a -m'
+alias gc!='git commit -v --amend'
 alias gca!='git commit -v -a --amend'
+compdef _git gc=git-commit
+compdef _git gcm=git-commit
+compdef _git gcam=git-commit
+compdef _git gc!=git-commit
+compdef _git gca=git-commit
 compdef _git gca!=git-commit
-alias gcmsg='git commit -m'
-compdef _git gcmsg=git-commit
+
+# Git Customization: Altering Commits
+alias gcp='git cherry-pick'
+compdef _git gcp=git-cherry-pick
+alias grev='git revert'
 
 # Git Customization: Pull and Push
 alias gl='git pull'
 compdef _git gl=git-pull
 alias gpm="git pull origin master"
 compdef _git gpm=git-pull
-alias gcm='git checkout master'
 alias gup='git pull --rebase'
 compdef _git gup=git-fetch
-
 alias gp='git push'
 compdef _git gp=git-push
 
-# Git Customization: Snapchat
-alias bbs="./buckw build snapchat"
-alias bis="./buckw install snapchat"
-alias gbi="./gradlew buckInstall"
+# Git Customization: Log
+alias gl='git log'
+alias glf='git log --follow'
+alias glm="git log --merge"
+compdef _git gl=git-log
+compdef _git glf=git-log
+compdef _git glm=git-log
 
-# Git File Manipulation
-alias gcf="git cat-file -p"
+alias grl="git reflog"
+alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
+
+# Git Customization: File Manipulation
+alias gcf='git cat-file -p'
+alias gsw='git show'
 alias gcoi="git checkout --"
 
 # Git Customization: Stashing
@@ -102,6 +148,14 @@ alias gb='git branch'
 compdef _git gb=git-branch
 alias gba='git branch -a'
 compdef _git gba=git-branch
+
+# Git Customization: Clean Repo
+alias gclean='git reset --hard && git clean -dfx'
+
+# Git Customization: ignoring file changes 
+alias gignore='git update-index --assume-unchanged'
+alias gunignore='git update-index --no-assume-unchanged'
+alias gignored='git ls-files -v | grep "^[[:lower:]]"' # list temporarily ignored files
 
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -162,40 +216,8 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 # Aliases
-
-
-alias gco='git checkout'
-compdef _git gco=git-checkout
-
 alias gcount='git shortlog -sn'
 compdef gcount=git
-alias gcl='git config --list'
-alias gcp='git cherry-pick'
-compdef _git gcp=git-cherry-pick
-alias gl='git log'
-compdef _git gl=git-log
-alias glg='git log --stat --max-count=10'
-compdef _git glg=git-log
-alias glgg='git log --graph --max-count=10'
-compdef _git glgg=git-log
-alias glgga='git log --graph --decorate --all'
-compdef _git glgga=git-log
-alias glo='git log --oneline --decorate --color'
-compdef _git glo=git-log
-alias glog='git log --oneline --decorate --color --graph'
-compdef _git glog=git-log
-alias gs='git status'
-compdef _git gs=git-status
-alias gss='git status -s'
-compdef _git gss=git-status
-alias ga='git add'
-compdef _git ga=git-add
-alias gm='git merge'
-compdef _git gm=git-merge
-alias grh='git reset HEAD'
-alias grhh='git reset HEAD --hard'
-alias gclean='git reset --hard && git clean -dfx'
-alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
 #remove the gf alias
 #alias gf='git ls-files | grep'
@@ -206,7 +228,6 @@ compdef _git gm=git-mergetool
 
 alias gg='git gui citool'
 alias gga='git gui citool --amend'
-alias gk='gitk --all --branches'
 
 # Will cd into the top of the current repository
 # or submodule.
@@ -259,12 +280,6 @@ function work_in_progress() {
 # these alias commit and uncomit wip branches
 alias gwip='git add -A; git ls-files --deleted -z | xargs -r0 git rm; git commit -m "--wip--"'
 alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
-
-# these alias ignore changes to file
-alias gignore='git update-index --assume-unchanged'
-alias gunignore='git update-index --no-assume-unchanged'
-# list temporarily ignored files
-alias gignored='git ls-files -v | grep "^[[:lower:]]"'
 
 #####################################################################
 ## The following setting would be subject to the local configuration.
