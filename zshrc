@@ -30,6 +30,9 @@ alias g='git'
 compdef g=git
 
 alias ga='git add'
+alias gaa='git add -A' # add all
+alias ga.='git add .' # add all new and modified (without deleted)
+alias gau='git add -u' # add all modified and deleted (without new)
 alias gap='git add -p' # hunk
 compdef _git ga=git-add
 compdef _git gap=git-add
@@ -72,7 +75,6 @@ compdef _git gdv=git-diff
 
 # Git Customization: Commits
 alias gc='git commit -v'
-alias gcm='git commit -m'
 alias gca='git commit -v -a'
 alias gcam='git commit -a -m'
 alias gc!='git commit -v --amend'
@@ -98,6 +100,8 @@ alias gup='git pull --rebase'
 compdef _git gup=git-fetch
 alias gp='git push'
 compdef _git gp=git-push
+alias gpo='git push origin'
+compdef _git gpo=git-push
 
 # Git Customization: Log
 alias gl='git log'
@@ -153,7 +157,9 @@ compdef _git gba=git-branch
 alias gclean='git reset --hard && git clean -dfx'
 
 # Git Customization: ignoring file changes 
+alias gig='git update-index --assume-unchanged'
 alias gignore='git update-index --assume-unchanged'
+alias guig='git update-index --no-assume-unchanged'
 alias gunignore='git update-index --no-assume-unchanged'
 alias gignored='git ls-files -v | grep "^[[:lower:]]"' # list temporarily ignored files
 
@@ -323,3 +329,7 @@ eval "$(jenv init -)"
 
 # Catapult Renderer
 export CATAPULT=$HOME/Workspace/catapult
+
+# Airflow
+export AIRFLOW_HOME=$HOME/airflow
+export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.config/gcloud/application_default_credentials.json
