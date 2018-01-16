@@ -23,22 +23,17 @@ alias zshs="source $HOME/.zshrc"
 alias bbs="./buckw build snapchat"
 alias bis="./buckw install snapchat"
 alias gbi="./gradlew buckInstall"
+alias ggpm="buck kill && rm -fr buck-out/ && git pull && git gc --prune=now && git remote prune origin"
 
 # Git Customization: basics 
 alias git="/usr/local/bin/git" # installed by brew
 alias g='git'
 compdef g=git
 
-alias ga='git add'
-alias gaa='git add -A' # add all
-alias ga.='git add .' # add all new and modified (without deleted)
-alias gau='git add -u' # add all modified and deleted (without new)
-alias gap='git add -p' # hunk
-compdef _git ga=git-add
-compdef _git gap=git-add
-
 alias gm='git merge'
 compdef _git gm=git-merge
+
+alias grp='git rev-parse'
 
 # Git Customization: Info
 alias gls='git ls-files'
@@ -47,6 +42,18 @@ alias gparse='git rev-parse' # get file name
 alias gsb='git show-branch'
 alias gk='gitk --all --branches'
 alias gcl='git config --list'
+
+# Git Customization: add files into index
+alias ga='git add'
+alias gaa='git add -A' # add all
+alias ga.='git add .' # add all new and modified (without deleted)
+alias gau='git add -u' # add all modified and deleted (without new)
+alias gap='git add -p' # hunk
+compdef _git ga=git-add
+compdef _git gaa=git-add
+compdef _git gap=git-add
+compdef _git ga.=git-add
+compdef _git gau=git-add
 
 # Git Customization: Checkout 
 alias gco='git checkout'
@@ -92,8 +99,8 @@ compdef _git gcp=git-cherry-pick
 alias grev='git revert'
 
 # Git Customization: Pull and Push
-alias gl='git pull'
-compdef _git gl=git-pull
+alias gpl='git pull'
+compdef _git gpl=git-pull
 alias gpm="git pull origin master"
 compdef _git gpm=git-pull
 alias gup='git pull --rebase'
@@ -142,16 +149,25 @@ alias grup='git remote update'
 compdef _git grset=git-remote
 
 # Git Customization: Rebasing
+alias grb='git rebase'
 alias grbi='git rebase -i'
-compdef _git gri=git-rebase
 alias grbc='git rebase --continue'
-compdef _git grbc=git-rebase
 alias grba='git rebase --abort'
+compdef _git grb=git-rebase
+compdef _git grbi=git-rebase
+compdef _git grbc=git-rebase
 compdef _git grba=git-rebase
+
 alias gb='git branch'
-compdef _git gb=git-branch
 alias gba='git branch -a'
+alias gbd='git branch -d'
+alias gbD='git branch -D'
+alias gbDA='git branch | egrep -v "(master|\*)" | xargs git branch -D'
 compdef _git gba=git-branch
+compdef _git gb=git-branch
+compdef _git gbd=git-branch
+compdef _git gbD=git-branch
+compdef _git gbDA=git-branch
 
 # Git Customization: Clean Repo
 alias gclean='git reset --hard && git clean -dfx'
@@ -333,3 +349,19 @@ export CATAPULT=$HOME/Workspace/catapult
 # Airflow
 export AIRFLOW_HOME=$HOME/airflow
 export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.config/gcloud/application_default_credentials.json
+
+# streaming-cli
+export PATH=$PATH:$HOME/snapchat/blizzard/streaming/cli
+
+# flowrida
+source '/Users/jimmy.lin/.flowridarc'
+
+# android ndk
+export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
+export ANDROID_SDK=/usr/local/share/android-sdk
+export ANDROID_SDK_ROOT=$ANDROID_SDK
+export ANDROID_HOME=$ANDROID_SDK
+export ANDROID_NDK_REPOSITORY=/usr/local/share/android-ndk
+export ANDROID_SDK_HOME=$ANDROID_SDK
+export ANDROID_REPO="/Users/jimmy.lin/android/snapchat"
+
