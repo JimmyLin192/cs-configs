@@ -7,21 +7,37 @@ filetype off
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin() "call vundle#begin('~/plugin/install/path/here')
+""" PLUGIN MANAGEMENT
 Plugin 'VundleVim/Vundle.vim' " Vundle manage Vundle, required
 Plugin 'google/vim-maktaba' " Plugin Library
 Plugin 'google/vim-glaive' " Plugin Configuration
+
+""" CODING ASSISTANCE
 Plugin 'google/vim-codefmt' " Code Formatting
 Plugin 'Valloric/YouCompleteMe' " Auto Completion
-Plugin 'majutsushi/tagbar' " Outline Window
-Plugin 'ntpeters/vim-better-whitespace' " Trailing Whitespace
-Plugin 'mhinz/vim-signify' " Show Diffs
+Plugin 'scrooloose/syntastic' " Error Checker
+Plugin 'ntpeters/vim-better-whitespace' " Whitespace Hanlder
 " Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-" Color Schemes
+
+""" BROWSING ASSISTANCE
+Plugin 'majutsushi/tagbar' " Outline Window
+Plugin 'airblade/vim-gitgutter' " Show Git Diffs
+" Plugin 'mhinz/vim-signify' " Show Diffs
+Plugin 'scrooloose/nerdtree' " File Tree Viewer
+Plugin 'vim-airline/vim-airline' " Status Bar
+Plugin 'vim-airline/vim-airline-themes' " Status Bar Themes
+
+" Fuzzy File Finder
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+""" COLOR SCHEMES
 Plugin 'flazz/vim-colorschemes'
 Plugin 'google/vim-colorscheme-primary'
-" Others
+
+""" OTHERS
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
@@ -51,7 +67,7 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""" PLUGIN CONFIGURATIONS """""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Configuration: majutsushi/tagbar
-let g:tagbar_left = 1
+let g:tagbar_left=1
 
 " Plugin Configuration: mhinz/vim-signify
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=250
@@ -62,11 +78,20 @@ highlight SignifySignDelete cterm=bold ctermbg=110 ctermfg=0
 highlight SignifySignChange cterm=bold ctermbg=008  ctermfg=0
 noremap :sdiff :SignifyDiff
 
+" Plugin Configuration: vim-airline/vim-airline-themes
+"let g:airline_theme='simple'
+let g:airline_theme='angr'
+"let g:airline_theme='violet'
+"let g:airline_theme='base16'
+
 " Plugin Configuration: Valloric/YouCompleteMe
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 " Plugin Configuration: majutsushi/tagbar
 nmap ,g :TagbarToggle<CR>
+
+" Plugin Configuration: scrooloose/nerdtree
+map ,v :NERDTreeToggle<CR>
 
 " Plugin Configuration: ntpeters/vim-better-whitespace
 let g:better_whitespace_ctermcolor='yellow'
@@ -96,13 +121,21 @@ colorscheme wombat256i
 "colorscheme primary
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key Mapping
+noremap <C-j> 10j
+noremap <C-k> 10k
+
+" Backup
+set backupdir=$HOME/.vimbak
+
 set number
 set tw=80
 set tabstop=2
 set gfn=Monaco:h14 " set guifont=Consolas:h15
-set formatoptions=tcqro
+set formatoptions=croqlj
 
 syntax on
+set cursorline
 set autoindent
 set smartindent
 set expandtab
@@ -111,9 +144,6 @@ set ruler
 set hlsearch
 set incsearch
 let g:searchtasks_list=["TODO", "FIXME", "XXX", "NOTE"]
-
-noremap <C-j> 10j
-noremap <C-k> 10k
 
 set cmdheight=1
 
