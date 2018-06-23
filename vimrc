@@ -14,6 +14,7 @@ Plugin 'google/vim-codefmt' " Code Formatting
 Plugin 'Valloric/YouCompleteMe' " Auto Completion
 Plugin 'majutsushi/tagbar' " Outline Window
 Plugin 'ntpeters/vim-better-whitespace' " Trailing Whitespace
+Plugin 'mhinz/vim-signify' " Show Diffs
 " Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -51,10 +52,19 @@ filetype plugin indent on    " required
 " Plugin Configuration: majutsushi/tagbar
 let g:tagbar_left = 1
 
+" Plugin Configuration: mhinz/vim-signify
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=250
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=0
+highlight SignifySignDelete cterm=bold ctermbg=110 ctermfg=0
+highlight SignifySignChange cterm=bold ctermbg=008  ctermfg=0
+noremap :sdiff :SignifyDiff
+
 " Plugin Configuration: Valloric/YouCompleteMe
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
-" Plugin Configuration:
+" Plugin Configuration: majutsushi/tagbar
 nmap ,g :TagbarToggle<CR>
 
 " Plugin Configuration: ntpeters/vim-better-whitespace
@@ -72,8 +82,8 @@ noremap cs :colorscheme
 "colorscheme tibet
 "colorscheme adam
 "colorscheme xemacs
-"colorscheme wombat256i
-colorscheme wombat256mod
+colorscheme wombat256i
+"colorscheme wombat256mod
 "colorscheme zen
 "colorscheme trivial256
 "colorscheme molokai
