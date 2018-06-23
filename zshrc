@@ -1,7 +1,6 @@
 #####################################################################
 ## Zsh configuration and customization.
 #####################################################################
-# {{{
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
@@ -11,13 +10,13 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 source $ZSH/oh-my-zsh.sh
 
-
 alias zshconfig="vi $HOME/.zshrc"
 alias zshconf="vi $HOME/.zshrc"
 alias zshc="vi $HOME/.zshrc"
 alias zshsource="source $HOME/.zshrc"
 alias zshs="source $HOME/.zshrc"
 
+# {{{
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -79,6 +78,13 @@ else
 fi
 # }}}
 
+plugins=(
+  git,
+  zsh-256color,
+  osx
+)
+source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+
 #####################################################################
 ## SSH configuration and customization.
 #####################################################################
@@ -88,9 +94,8 @@ fi
 ## Git configuration and customization.
 #####################################################################
 # {{{
-plugins=(git)
-# Git Customization: basics 
-alias git="/usr/local/git/current/bin/git" 
+# Git Customization: basics
+alias git="/usr/local/git/current/bin/git"
 alias g='git'
 compdef g=git
 
@@ -119,7 +124,7 @@ compdef _git gap=git-add
 compdef _git ga.=git-add
 compdef _git gau=git-add
 
-# Git Customization: Checkout 
+# Git Customization: Checkout
 alias gco='git checkout'
 alias gcm='git checkout master'
 compdef _git gco=git-checkout
@@ -236,7 +241,7 @@ compdef _git gbDA=git-branch
 # Git Customization: Clean Repo
 alias gclean='git reset --hard && git clean -dfx'
 
-# Git Customization: ignoring file changes 
+# Git Customization: ignoring file changes
 alias gig='git update-index --assume-unchanged'
 alias gignore='git update-index --assume-unchanged'
 alias guig='git update-index --no-assume-unchanged'
@@ -317,4 +322,11 @@ alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 export PATH=/opt/local/bin:$PATH
 export PATH=/opt/local/sbin:$PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:$PATH
-export PATH=/usr/local/bin:/opt/X11/bin:/usr/texbin:$PATH
+export PATH=/usr/local/bin:/usr/texbin:$PATH
+
+export PATH=/usr/local/bin/ctags-5.8:$PATH
+
+export PATH=/Applications/CMake.app/Contents/bin:$PATH
+
+# ctags
+alias ctags="/usr/local/Cellar/ctags/5.8_1/bin/ctags"
