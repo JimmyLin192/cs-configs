@@ -21,6 +21,7 @@ Plugin 'honza/vim-snippets'
 " Color Schemes
 Plugin 'flazz/vim-colorschemes'
 Plugin 'google/vim-colorscheme-primary'
+" Others
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
@@ -89,36 +90,32 @@ colorscheme wombat256i
 "colorscheme molokai
 
 " Plugin Configuration: google/vim-colorscheme-primary
-" syntax enable
-" set t_Co=256
-" set background=dark
-" colorscheme primary
+"syntax enable
+"set t_Co=256
+"set background=dark
+"colorscheme primary
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number
+set tw=80
 set tabstop=2
+set gfn=Monaco:h14 " set guifont=Consolas:h15
+set formatoptions=tcqro
+
 syntax on
 set autoindent
 set smartindent
-set shiftwidth=4
 set expandtab
-set formatoptions=tcqro
 set showmatch
-set vb t_vb=
-set nohls
 set ruler
 set hlsearch
 set incsearch
-set tw=78
-set gfn=Monaco:h14
 let g:searchtasks_list=["TODO", "FIXME", "XXX", "NOTE"]
 
 noremap <C-j> 10j
 noremap <C-k> 10k
 
 set cmdheight=1
-" set guifont=Monaco:h14
-" set guifont=Consolas:h15
 
 set fdm=marker
 set nocp
