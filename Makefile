@@ -9,9 +9,10 @@ git_config:
 
 ## install for vim
 vim_install:
-	ln -s $(vim_dir)/vim $(HOME)/.vim
 	ln -s $(vim_dir)/vimrc $(HOME)/.vimrc
-	chmod 755 $(HOME)/.vim
+	mkdir -p $(HOME)/.vim/bundle
+	git clone https://github.com/VundleVim/Vundle.vim.git $(HOME)/.vim/bundle/Vundle.vim
+	vim +PluginInstall +qall
 	chmod 755 $(HOME)/.vimrc
 
 ## install for zsh
