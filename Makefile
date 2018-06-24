@@ -18,7 +18,9 @@ vim_install:
 ## install for zsh
 zsh_install:
 	wget --no-check-certificate http://install.ohmyz.sh -O - | sh
-	ln -s $(cur_path)/zshrc $(HOME)/.zshrc
+	ln -s $(cur_path)/zshrc.zsh $(HOME)/.zshrc
+	ln -s $(cur_path)/git.zsh $(HOME)/.git.zsh
+	ln -s $(cur_path)/local.zsh $(HOME)/.local.zsh
 	chmod 755 $(HOME)/.zshrc
 
 ## install for fish
