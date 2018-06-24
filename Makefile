@@ -14,7 +14,7 @@ vim_install:
 	chmod 755 $(HOME)/.vim
 	chmod 755 $(HOME)/.vimrc
 
-## install for zsh 
+## install for zsh
 zsh_install:
 	wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 	ln -s $(cur_path)/zshrc $(HOME)/.zshrc
@@ -25,11 +25,16 @@ fish_install:
 	ln -s fishrc.fish ~/.config/fish/config.fish
 	chmod 755 ~/.config/fish/config.fish
 
+## install for tmux
+tmux_install:
+	ln -s tmux.conf ~/.tmux.conf
+	chmod 755 ~/.tmux.conf
+
 ## remove all installed files
 clean:
 	rm -rf $(HOME)/.zshrc
 	rm -rf $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.gitconfig
-	#rm -rf ~/.config/fish/config.fish	
+	#rm -rf ~/.config/fish/config.fish
 

@@ -3,6 +3,7 @@
 #####################################################################
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -67,7 +68,6 @@ alias zshs="source $HOME/.zshrc"
 #####################################################################
 ## VIM configuration and customization.
 #####################################################################
-# {{{
 alias vi='/usr/bin/vi'
 alias vim='/usr/bin/vi'
 # Preferred editor for local and remote sessions
@@ -76,7 +76,6 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='vi'
 fi
-# }}}
 
 plugins=(
   git,
@@ -84,6 +83,13 @@ plugins=(
   osx
 )
 source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+
+#####################################################################
+## Unix configuration and customization.
+#####################################################################
+alias j='jobs'
+alias t='tmx2' # or tmux
+alias th='touch'
 
 #####################################################################
 ## SSH configuration and customization.

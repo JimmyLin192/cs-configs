@@ -18,8 +18,8 @@ Plugin 'Valloric/YouCompleteMe' " Auto Completion
 Plugin 'scrooloose/syntastic' " Error Checker
 Plugin 'ntpeters/vim-better-whitespace' " Whitespace Hanlder
 " Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 
 """ BROWSING ASSISTANCE
 Plugin 'majutsushi/tagbar' " Outline Window
