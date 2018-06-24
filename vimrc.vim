@@ -130,22 +130,17 @@ set backupdir=$HOME/.vimbak
 
 set number
 set tw=80
-set tabstop=2
+set tabstop=2 shiftwidth=2 expandtab
 set gfn=Monaco:h14 " set guifont=Consolas:h15
 set formatoptions=croqlj
 
 syntax on
 set cursorline
-set autoindent
-set smartindent
-set expandtab
+set autoindent smartindent
 set showmatch
 set ruler
-set hlsearch
-set incsearch
+set hlsearch incsearch
 let g:searchtasks_list=["TODO", "FIXME", "XXX", "NOTE"]
-
-set cmdheight=1
 
 set fdm=marker
 set nocp

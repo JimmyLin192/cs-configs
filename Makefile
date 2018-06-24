@@ -9,7 +9,7 @@ git_config:
 
 ## install for vim
 vim_install:
-	ln -s $(vim_dir)/vimrc $(HOME)/.vimrc
+	ln -s $(vim_dir)/vimrc.vim $(HOME)/.vimrc
 	mkdir -p $(HOME)/.vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git $(HOME)/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
